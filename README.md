@@ -2,15 +2,15 @@
 
 ## Summary 
 
-Get Opus 4.7 quality code generation, review and exploration for **free** running a local LLM on your ASUS Laptop. 
+Get close to Opus quality code, review and exploration for **free** running a local LLM on your ASUS Laptop. 
 
 ## Pre-Requisites 
 
 These instructions are for a very specific machine and setup. I expect these to work on anything like these or better.
 
-Hardware: ASUS ROG Strix SCAR 16, NVidia GeForce RTX 4090 **16 GB VRAM**, and **64GB RAM**
+Hardware: ASUS ROG Strix SCAR 16, NVidia GeForce RTX 4090 *Laptop GPU* **16 GB VRAM**, and **64GB RAM**
 
-Software: WLS2 running on Windows 11
+Software: WSL2 running on Windows 11
 
 You will need at least 20GB of free space on your drive.
 
@@ -22,7 +22,7 @@ Download Ollama and install it from the official download page:
 
 [Download Ollama](https://ollama.com/download)
 
-And follow the instructions on screen. Everything happens in WLS2.
+And follow the instructions on screen. Everything happens in WSL2.
 
 ## Install OpenCode
 
@@ -46,7 +46,7 @@ Run `nvidia-smi` to get information about the free VRAM.
 
 I had to have at least 13GB free, to be able to load qwen3. 
 
-I had to close Photoshop, Slack, Resolve, Postman and a few more apps that where 
+I had to close Photoshop, Slack, Resolve, Postman and a few more apps that were 
 using VRAM. And I got from 3GB free to 13GB free VRAM.
 
 If you skip this step you won't be able to launch the model.
@@ -57,17 +57,17 @@ On my machine, when I tried to use the downloaded model it would default to a 4k
 window which is too small for a coding agent. And the side effect is that you will just 
 get unusable responses that don't make any sense. 
 
-The solution that worked for me was to create a fork of the model where I explicity set 
+The solution that worked for me was to create a fork of the model where I explicitly set 
 the context size.
 
-The main idea was to start the original model, explicity set the context window, then 
+The main idea was to start the original model, explicitly set the context window, then 
 save as a new model.
 
 First start the original model with this command:
 
 `ollama run qwen3-coder`
 
-Once you have the chat promt, give these commands:
+Once you have the chat prompt, give these commands:
 
 ```text
 >>> /set parameter num_ctx 65536
@@ -151,7 +151,7 @@ Hopefully at this point you will see OpenCode using this model `qwen3-coder-64k`
 
 Enter a query in the box, something like "what is this project about".
 
-Once you start to get some output, in a differnet console tab run this command:
+Once you start to get some output, in a different console tab run this command:
 
 `ollama ps`
 
@@ -178,7 +178,7 @@ On my setup I was able to get 12.5 tok/s which felt pretty snappy.
 
 Quality wise, I have not noticed yet any major issues. Generated code looks good, asking questions about the codebase yield relevant responses. 
 
-I don't feel as confident as when using ClaudeCode, but next time I hit an API usage limit I will get back to this for sure.
+I don't feel as confident as when using Claude Code, but next time I hit an API usage limit I will get back to this for sure.
 
 ## Troubleshooting
 
@@ -196,6 +196,6 @@ Both Ollama and OpenCode start background services. Until those are restarted ol
 sessions and models can hang around with the wrong configurations.
 
 Restarting the services and killing any stray Ollama processes or OpenCode sessions is what 
-fixed the problem and everyting was finally aligned. 
+fixed the problem and everything was finally aligned. 
 
 In the end you should be seeing the model `qwen3-coder-64k` in all the relevant places.
