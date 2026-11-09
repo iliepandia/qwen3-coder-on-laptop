@@ -1,8 +1,8 @@
-# Free Code Generation with Local LLM - QWen3-coder, Ollama, OpenCode on an ASUS Strix Laptop
+# Running Qwen3-Coder 30B Locally with Ollama and OpenCode
 
 ## Summary 
 
-Get close to Opus quality code, review and exploration for **free** running a local LLM on your ASUS Laptop. 
+A reproducible setup for running Qwen3-Coder 30B (Q4_K_M) with a 64k context window on an RTX 4090 Laptop GPU with 16 GB VRAM and 64 GB RAM. This setup produced about 12.5 tokens/s. The guide documents the default 4k-context failure mode, the fix, verification steps, and troubleshooting.
 
 ## Pre-Requisites 
 
